@@ -1,8 +1,16 @@
 import type { MetadataRoute } from "next";
-import { siteUrl } from "@/lib/site";
+import { content, languageAlternates, locales, siteUrl } from "@/lib/site";
 
 export const dynamic = "force-static";
 
+const languages = Object.fromEntries(Object.entries(languageAlternates).map(([l, path]) => [l, `${siteUrl}${path}`]));
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [{ url: `${siteUrl}/`, lastModified: new Date(), changeFrequency: "monthly", priority: 1 }];
+  return locales.map((locale) => ({
+    url: `${siteUrl}${content[locale].path}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: locale === "uk" ? 1 : 0.9,
+    alternates: { languages },
+  }));
 }

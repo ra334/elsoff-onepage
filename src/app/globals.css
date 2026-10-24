@@ -14,8 +14,14 @@ a{color:inherit;text-decoration:none}
 .wash{position:absolute;inset:0;z-index:0;background:linear-gradient(90deg,rgba(249,246,241,.71) 0%,rgba(249,246,241,.32) 41%,rgba(249,246,241,0) 67%)}
 .site-header,.hero,.site-footer{position:relative;z-index:1}
 
-.site-header{display:flex;align-items:center;height:91px}
+.site-header{display:flex;align-items:center;justify-content:space-between;height:91px}
 .brand-logo{display:block;width:68px;height:auto}
+
+/* Same pill as the landing's language menu, just two links instead of a dropdown */
+.locale-switch{display:inline-flex;gap:2px;border-radius:999px;padding:3px;background:rgba(255,255,255,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.locale-switch a{display:inline-flex;align-items:center;border-radius:999px;padding:7px 11px;font-size:10px;font-weight:700;letter-spacing:.08em;color:#6b655d;transition:background .2s,color .2s}
+.locale-switch a:hover{color:#25231f}
+.locale-switch a[aria-current]{background:#242321;color:#fff}
 
 .hero{align-self:center;padding:40px 0 80px}
 .hero h1{margin:0;max-width:650px;font-size:clamp(54px,5.8vw,86px);font-weight:500;letter-spacing:-.052em;line-height:1.02}

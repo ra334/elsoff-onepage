@@ -1,6 +1,10 @@
 import Image from "next/image";
+import { LocaleSwitcher } from "@/components/LocaleSwitcher";
+import { content, type Locale } from "@/lib/site";
 
-export default function Home() {
+export function Page({ locale }: { locale: Locale }) {
+  const t = content[locale];
+
   return (
     <main className="page">
       <Image className="scene" src="/images/hero.webp" alt="" fill priority sizes="100vw" />
@@ -9,15 +13,16 @@ export default function Home() {
 
       <header className="shell site-header">
         <Image src="/brand/elsoff-wordmark.svg" alt="elsoff" width={1203} height={324} priority className="brand-logo" />
+        <LocaleSwitcher locale={locale} />
       </header>
 
       <section className="shell hero">
         <h1>
-          Більше простору
+          {t.heading[0]}
           <br />
-          для важливого.
+          {t.heading[1]}
         </h1>
-        <p>Фізичний таймер для зосередженої роботи. Готуємо до запуску.</p>
+        <p>{t.subtitle}</p>
       </section>
 
       <footer className="shell site-footer">© {new Date().getFullYear()} elsoff</footer>
