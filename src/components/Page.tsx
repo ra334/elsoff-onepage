@@ -1,6 +1,5 @@
 import Image from "next/image";
-import { LocaleSwitcher } from "@/components/LocaleSwitcher";
-import { content, type Locale } from "@/lib/site";
+import { content, type Locale, locales } from "@/lib/site";
 
 export function Page({ locale }: { locale: Locale }) {
   const t = content[locale];
@@ -13,7 +12,20 @@ export function Page({ locale }: { locale: Locale }) {
 
       <header className="shell site-header">
         <Image src="/brand/elsoff-wordmark.svg" alt="elsoff" width={1203} height={324} priority className="brand-logo" />
-        <LocaleSwitcher locale={locale} />
+        <nav className="locale-switch" aria-label={t.languageLabel}>
+          {locales.map((l) => (
+            <a
+              key={l}
+              href={content[l].path}
+              lang={l}
+              hrefLang={l}
+              title={content[l].nativeName}
+              aria-current={l === locale ? "page" : undefined}
+            >
+              {content[l].shortLabel}
+            </a>
+          ))}
+        </nav>
       </header>
 
       <section className="shell hero">

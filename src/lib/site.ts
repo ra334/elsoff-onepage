@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 
 export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://elsoff.com").replace(/\/$/, "");
 
-export const locales = ["uk", "en"] as const;
+export const locales = ["en", "uk"] as const;
 export type Locale = (typeof locales)[number];
-export const defaultLocale: Locale = "uk";
+export const defaultLocale: Locale = "en";
 
 export const site = {
   name: "elsoff",
@@ -33,7 +33,7 @@ export const content: Record<
   }
 > = {
   uk: {
-    path: "/",
+    path: "/uk/",
     ogLocale: "uk_UA",
     shortLabel: "UA",
     nativeName: "Українська",
@@ -46,7 +46,7 @@ export const content: Record<
     languageLabel: "Мова сайту",
   },
   en: {
-    path: "/en/",
+    path: "/",
     ogLocale: "en_US",
     shortLabel: "EN",
     nativeName: "English",

@@ -1,5 +1,5 @@
 import { Page } from "@/components/Page";
 
-export default function Home() {
+export default function HomeUk() {
   return <Page locale="uk" />;
 }

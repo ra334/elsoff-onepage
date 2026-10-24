@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 import { Onest } from "next/font/google";
-import { autoLocaleScript } from "@/lib/auto-locale";
 import { content, type Locale, site, siteUrl } from "@/lib/site";
 import "@/app/globals.css";
 
@@ -37,10 +36,6 @@ function jsonLd(locale: Locale) {
 export function Document({ locale, children }: { locale: Locale; children: ReactNode }) {
   return (
     <html lang={locale} className={sans.variable}>
-      {/* eslint-disable-next-line @next/next/no-head-element -- App Router root layout; Next merges metadata into it */}
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: autoLocaleScript(locale) }} />
-      </head>
       <body>
         {children}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd(locale)) }} />

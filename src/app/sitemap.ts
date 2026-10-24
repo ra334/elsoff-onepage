@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { content, languageAlternates, locales, siteUrl } from "@/lib/site";
+import { content, defaultLocale, languageAlternates, locales, siteUrl } from "@/lib/site";
 
 export const dynamic = "force-static";
 
@@ -10,7 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${siteUrl}${content[locale].path}`,
     lastModified: new Date(),
     changeFrequency: "monthly",
-    priority: locale === "uk" ? 1 : 0.9,
+    priority: locale === defaultLocale ? 1 : 0.9,
     alternates: { languages },
   }));
 }
